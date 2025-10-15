@@ -256,11 +256,13 @@ int agxWrite(AGXExporter exporter, const char *filename)
   uint32_t version = 1;
   uint32_t endianMarker = 0x01020304;
   uint32_t timeSteps = exporter->timeSteps;
+  uint32_t objectType = ANARI_GEOMETRY; // reserved for future configuration
 
   bool ok = true;
   ok = ok && writeBytes(f, magic, sizeof(magic));
   ok = ok && writePOD(f, version);
   ok = ok && writePOD(f, endianMarker);
+  ok = ok && writePOD(f, objectType);
   ok = ok && writePOD(f, timeSteps);
   ok = ok && writePOD(f, constantCount);
 

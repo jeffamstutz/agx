@@ -22,6 +22,7 @@ typedef struct AGXReader_t *AGXReader;
 typedef struct AGXHeader
 {
   uint32_t version;
+  ANARIDataType objectType;
   uint32_t timeSteps;
   uint32_t constantParamCount;
 

@@ -10,6 +10,7 @@
 //     char[4]   magic = "AGXB"
 //     uint32_t  version = 1
 //     uint32_t  endianMarker = 0x01020304
+//     uint32_t  objectType
 //     uint32_t  timeSteps
 //     uint32_t  constantParamCount
 //

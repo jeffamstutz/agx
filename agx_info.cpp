@@ -50,6 +50,8 @@ int main(int argc, char **argv)
             << "\n";
   std::cout << "  byte swap needed      : " << (hdr.needByteSwap ? "yes" : "no")
             << "\n";
+  std::cout << "  objectType            : " << anari::toString(hdr.objectType)
+            << "\n";
   std::cout << "  timeSteps             : " << hdr.timeSteps << "\n";
   std::cout << "  constantParamCount    : " << hdr.constantParamCount << "\n";
 

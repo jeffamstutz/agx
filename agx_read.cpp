@@ -251,11 +251,12 @@ AGXReader agxNewReader(const char *filename)
 
   uint32_t version = 0;
   uint32_t endianMarker = 0;
+  uint32_t objectType = ANARI_UNKNOWN; // default in case of early error
   uint32_t timeSteps = 0;
   uint32_t constCount = 0;
 
   if (!readU32(r->f, version, false) || !readU32(r->f, endianMarker, false)
-      || !readU32(r->f, timeSteps, false)
+      || !readU32(r->f, objectType, false) || !readU32(r->f, timeSteps, false)
       || !readU32(r->f, constCount, false)) {
     agxReleaseReader(r);
     return nullptr;
@@ -287,6 +288,7 @@ AGXReader agxNewReader(const char *filename)
   }
 
   r->hdr.version = version;
+  r->hdr.objectType = static_cast<ANARIDataType>(objectType);
   r->hdr.timeSteps = timeSteps;
   r->hdr.constantParamCount = constCount;
   r->hdr.endianMarker = endianMarker;

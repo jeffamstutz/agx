@@ -52,6 +52,9 @@ int main(int argc, char **argv)
       hdr.constantParamCount,
       hdr.needByteSwap);
 
+  // Type
+  std::printf("   Type: '%s'\n", anari::toString(hdr.objectType));
+
   // Subtype
   const char *subtype = agxReaderGetSubtype(r);
   std::printf("Subtype: '%s'\n", subtype);
