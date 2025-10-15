@@ -1,7 +1,7 @@
 # AGX — Animated Geometry eXport
 
-AGX is a tiny C-style API (implemented in C++) for dumping animated geometry and
-associated parameters to a file. It mirrors the feel of the ANARI API:
+AGX is a tiny, stb-style API (implemented in C++) for dumping animated geometry
+and associated parameters to a file. It mirrors the feel of the ANARI API:
 parameters can be set either as constants (for the entire animation) or per time
 step, and arrays are typed using ANARI’s logical type enums (ANARIDataType).
 This exists to make it easy to create small, portable fixtures or debug dumps of
@@ -15,7 +15,8 @@ animated geometry without requiring a renderer.
 ## Example Usage
 
 ```cpp
-#include "agx_write.h"
+#define AGX_WRITE_IMPL 1
+#include "agx/agx_write.h"
 
 #include <vector>
 #include <cmath>

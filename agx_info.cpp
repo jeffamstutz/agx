@@ -5,6 +5,7 @@
 // API.
 
 // agx
+#define AGX_READ_IMPL 1
 #include "agx/agx_read.h"
 // std
 #include <cstdint>
@@ -39,6 +40,8 @@ int main(int argc, char **argv)
     return 3;
   }
 
+  const char *subtype = agxReaderGetSubtype(r);
+
   std::cout << "AGXB header information (via reader API)\n";
   std::cout << "  version               : " << hdr.version << "\n";
   std::cout << "  endian marker         : 0x" << std::hex << std::uppercase
@@ -52,12 +55,9 @@ int main(int argc, char **argv)
             << "\n";
   std::cout << "  objectType            : " << anari::toString(hdr.objectType)
             << "\n";
+  std::cout << "  subtype               : '" << subtype << "'\n";
   std::cout << "  timeSteps             : " << hdr.timeSteps << "\n";
   std::cout << "  constantParamCount    : " << hdr.constantParamCount << "\n";
-
-  // Subtype
-  const char *subtype = agxReaderGetSubtype(r);
-  std::cout << "  subtype               : '" << subtype << "'\n";
 
   agxReleaseReader(r);
 

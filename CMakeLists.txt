@@ -15,10 +15,9 @@ find_package(anari REQUIRED)
 
 ## Main library ##
 
-add_library(agx STATIC)
-target_sources(agx PRIVATE agx_read.cpp agx_write.cpp)
-target_include_directories(agx PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(agx PUBLIC anari::anari)
+add_library(agx INTERFACE)
+target_include_directories(agx INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(agx INTERFACE anari::anari)
 
 ## Header info tool ##
 
