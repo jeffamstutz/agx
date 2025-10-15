@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 // agx
-#define AGX_READ_IMPL 1
+#define AGX_READ_IMPL
 #include "agx/agx_read.h"
 // std
 #include <cstdio>

@@ -5,10 +5,6 @@
 
 // agx_reader.h - Reader API for AGXB (AGX binary) files.
 
-#ifndef AGX_READ_IMPL
-#define AGX_READ_IMPL 0
-#endif
-
 #include <stddef.h>
 #include <stdint.h>
 // Use ANARI's logical type enums.
@@ -105,7 +101,7 @@ void agxReaderResetTimeSteps(AGXReader r);
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-#if AGX_READ_IMPL
+#ifdef AGX_READ_IMPL
 #include <climits>
 #include <cstdio>
 #include <cstring>

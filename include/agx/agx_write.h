@@ -44,10 +44,6 @@
 // payload.
 // - Strings are stored without a trailing NUL.
 
-#ifndef AGX_WRITE_IMPL
-#define AGX_WRITE_IMPL 0
-#endif
-
 #include <stddef.h>
 #include <stdint.h>
 
@@ -118,7 +114,7 @@ const char *agxDataTypeToString(ANARIDataType type);
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-#if AGX_WRITE_IMPL
+#ifdef AGX_WRITE_IMPL
 // anari
 #include <anari/frontend/type_utility.h>
 // std

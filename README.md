@@ -15,7 +15,7 @@ animated geometry without requiring a renderer.
 ## Example Usage
 
 ```cpp
-#define AGX_WRITE_IMPL 1
+#define AGX_WRITE_IMPL
 #include "agx/agx_write.h"
 
 #include <vector>
