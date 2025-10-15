@@ -58,7 +58,7 @@ int main()
   }
 
   // Write JSON dump
-  int rc = agxWrite(ex, "animated_geometry_dump.json");
+  int rc = agxWrite(ex, "animated_geometry_dump.agx");
 
   agxReleaseExporter(ex);
   return rc;

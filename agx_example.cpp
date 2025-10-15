@@ -1,4 +1,4 @@
-// Copyright 2025 The Khronos Group
+// Copyright 2025 Jefferson Amstutz
 // SPDX-License-Identifier: Apache-2.0
 
 // std
@@ -59,7 +59,7 @@ int main()
   }
 
   // Write file
-  int rc = agxWrite(ex, "animated_geometry_dump.json");
+  int rc = agxWrite(ex, "animated_geometry_dump.agxb");
 
   agxReleaseExporter(ex);
   return rc;
