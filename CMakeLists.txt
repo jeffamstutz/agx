@@ -16,7 +16,7 @@ find_package(anari REQUIRED)
 ## Main library ##
 
 add_library(agx STATIC)
-target_sources(agx PRIVATE agx.cpp)
+target_sources(agx PRIVATE agx_read.cpp agx_write.cpp)
 target_include_directories(agx PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(agx PUBLIC anari::anari)
 
@@ -25,7 +25,10 @@ target_link_libraries(agx PUBLIC anari::anari)
 add_executable(agx_info agx_info.cpp)
 target_link_libraries(agx_info PRIVATE agx)
 
-## Example app ##
+## Example apps ##
 
-add_executable(agx_example agx_example.cpp)
-target_link_libraries(agx_example PRIVATE agx)
+add_executable(agx_read_example agx_read_example.cpp)
+target_link_libraries(agx_read_example PRIVATE agx)
+
+add_executable(agx_write_example agx_write_example.cpp)
+target_link_libraries(agx_write_example PRIVATE agx)

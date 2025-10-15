@@ -5,7 +5,7 @@
 #include <cmath>
 #include <vector>
 // agx
-#include "agx/agx.h"
+#include "agx/agx_write.h"
 
 int main()
 {

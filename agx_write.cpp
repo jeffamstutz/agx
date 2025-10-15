@@ -1,7 +1,7 @@
 // Copyright 2025 Jefferson Amstutz
 // SPDX-License-Identifier: Apache-2.0
 
-#include "agx/agx.h"
+#include "agx/agx_write.h"
 // anari
 #include <anari/frontend/type_utility.h>
 // std
