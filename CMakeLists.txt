@@ -20,6 +20,11 @@ target_sources(agx PRIVATE agx.cpp)
 target_include_directories(agx PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(agx PUBLIC anari::anari)
 
+## Header info tool ##
+
+add_executable(agx_info agx_info.cpp)
+target_link_libraries(agx_info PRIVATE agx)
+
 ## Example app ##
 
 add_executable(agx_example agx_example.cpp)
