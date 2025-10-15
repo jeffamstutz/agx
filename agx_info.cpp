@@ -53,6 +53,11 @@ int main(int argc, char **argv)
   std::cout << "  timeSteps             : " << hdr.timeSteps << "\n";
   std::cout << "  constantParamCount    : " << hdr.constantParamCount << "\n";
 
+  // Subtype
+  const char *subtype = agxReaderGetSubtype(r);
+  std::cout << "  subtype               : '" << subtype << "'\n";
+
   agxReleaseReader(r);
+
   return 0;
 }

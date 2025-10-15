@@ -27,6 +27,7 @@ struct ParamData
 
 struct AGXExporter_t
 {
+  std::string subtype; // optional
   uint32_t timeSteps{0};
   std::unordered_map<std::string, ParamData> constants;
   std::vector<std::unordered_map<std::string, ParamData>>
@@ -112,7 +113,9 @@ static bool writeParamRecord(
   return true;
 }
 
-// Public API implementations
+///////////////////////////////////////////////////////////////////////////////
+// Public API definitions /////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 extern "C" {
 
@@ -124,6 +127,13 @@ AGXExporter agxNewExporter()
 void agxReleaseExporter(AGXExporter exporter)
 {
   delete exporter;
+}
+
+void agxSetObjectSubtype(AGXExporter exporter, const char *subtype)
+{
+  if (!exporter)
+    return;
+  exporter->subtype = subtype ? std::string(subtype) : std::string{};
 }
 
 void agxSetTimeStepCount(AGXExporter exporter, uint32_t count)
@@ -253,6 +263,15 @@ int agxWrite(AGXExporter exporter, const char *filename)
   ok = ok && writePOD(f, endianMarker);
   ok = ok && writePOD(f, timeSteps);
   ok = ok && writePOD(f, constantCount);
+
+  // Subtype
+  if (ok) {
+    const std::string &subtype = exporter->subtype;
+    uint32_t subtypeLen = static_cast<uint32_t>(subtype.size());
+    ok = ok && writePOD(f, subtypeLen);
+    if (subtypeLen > 0)
+      ok = ok && writeBytes(f, subtype.data(), subtypeLen);
+  }
 
   // Constants section
   if (ok) {

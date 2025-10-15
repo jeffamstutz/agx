@@ -52,6 +52,10 @@ int main(int argc, char **argv)
       hdr.constantParamCount,
       hdr.needByteSwap);
 
+  // Subtype
+  const char *subtype = agxReaderGetSubtype(r);
+  std::printf("Subtype: '%s'\n", subtype);
+
   // Constants
   agxReaderResetConstants(r);
   AGXParamView pv{};

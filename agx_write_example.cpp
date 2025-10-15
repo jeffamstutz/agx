@@ -11,6 +11,9 @@ int main()
 {
   AGXExporter ex = agxNewExporter();
 
+  // Set subtype
+  agxSetObjectSubtype(ex, "triangle");
+
   // Set constants
   const float bboxMin[3] = {0.f, 0.f, 0.f};
   const float bboxMax[3] = {1.f, 1.f, 1.f};

@@ -22,6 +22,9 @@ struct AGXReader_t
   // Header info
   AGXHeader hdr{};
 
+  // Optional subtype
+  std::string subtype;
+
   // Offsets
   long constantsStart{-1}; // file position right after header
   long timeStepsStart{-1}; // file position at first time step header
@@ -219,6 +222,8 @@ static bool skipParamRecord(AGXReader_t *r)
   }
 }
 
+extern "C" {
+
 // Open and prime reader: read header and compute section offsets
 AGXReader agxNewReader(const char *filename)
 {
@@ -290,6 +295,22 @@ AGXReader agxNewReader(const char *filename)
   r->hdr.needByteSwap = r->needSwap ? 1 : 0;
   r->hdr.reserved = 0;
 
+  // Read optional subtype string
+  uint32_t subtypeLen = 0;
+  if (!readU32(r->f, subtypeLen, r->needSwap)) {
+    agxReleaseReader(r);
+    return nullptr;
+  }
+  if (subtypeLen > 0) {
+    r->subtype.resize(subtypeLen);
+    if (!readBytes(r->f, r->subtype.data(), subtypeLen)) {
+      agxReleaseReader(r);
+      return nullptr;
+    }
+  } else {
+    r->subtype.clear();
+  }
+
   // Mark constantsStart
   r->constantsStart = std::ftell(r->f);
 
@@ -324,6 +345,11 @@ int agxReaderGetHeader(AGXReader r_, AGXHeader *out)
     return 1;
   *out = r_->hdr;
   return 0;
+}
+
+const char *agxReaderGetSubtype(AGXReader r)
+{
+  return r->subtype.c_str();
 }
 
 // Constants iteration
@@ -431,3 +457,5 @@ void agxReaderSkipRemainingTimeStep(AGXReader r_)
   }
   r_->inStep = false;
 }
+
+} // extern "C"

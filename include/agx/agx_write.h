@@ -13,6 +13,10 @@
 //     uint32_t  timeSteps
 //     uint32_t  constantParamCount
 //
+//   Optional subtype string:
+//     uint32_t  subtypeLen
+//     char[]    subtype (subtypeLen bytes, not null-terminated)
+//
 //   Constant parameter records (constantParamCount times):
 //     uint32_t  nameLen
 //     char[]    name (nameLen bytes, not null-terminated)
@@ -55,6 +59,9 @@ typedef struct AGXExporter_t *AGXExporter;
 // Create/destroy exporter
 AGXExporter agxNewExporter();
 void agxReleaseExporter(AGXExporter exporter);
+
+// Set object subtype (optional, default = "")
+void agxSetObjectSubtype(AGXExporter exporter, const char *subtype);
 
 // Animation time steps
 void agxSetTimeStepCount(AGXExporter exporter, uint32_t count);

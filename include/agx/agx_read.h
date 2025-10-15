@@ -61,6 +61,9 @@ void agxReleaseReader(AGXReader r);
 // Returns 0 on success; nonzero on error. 'out' is filled on success.
 int agxReaderGetHeader(AGXReader r, AGXHeader *out);
 
+// Get object subtype (as set by writer, or "" if none was set).
+const char *agxReaderGetSubtype(AGXReader r);
+
 // Constant parameters iteration
 // Resets iteration to the first constant parameter.
 void agxReaderResetConstants(AGXReader r);
