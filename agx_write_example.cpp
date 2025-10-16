@@ -24,7 +24,7 @@ int main()
   // Constant index array (triangles)
   std::vector<uint32_t> index = {0, 1, 2, 2, 3, 0};
   agxSetParameterArray1D(
-      ex, "indices", ANARI_UINT32, index.data(), index.size());
+      ex, "primitive.index", ANARI_UINT32_VEC3, index.data(), index.size() / 3);
 
   // Time steps
   const uint32_t T = 4;
@@ -53,7 +53,7 @@ int main()
     positions[11] = std::cos(phase + 0.3f);
 
     agxSetTimeStepParameterArray1D(
-        ex, t, "positions", ANARI_FLOAT32_VEC3, positions.data(), 4);
+        ex, t, "vertex.position", ANARI_FLOAT32_VEC3, positions.data(), 4);
 
     // Also a per-time-step single value
     float timeValue = float(t) / float(T - 1);
