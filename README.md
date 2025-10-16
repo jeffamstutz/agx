@@ -33,7 +33,7 @@ int main()
 
   // Triangle index buffer (constant)
   std::vector<uint32_t> indices = {0,1,2, 2,3,0};
-  agxSetParameterArray1D(ex, "primitive.index", ANARI_UINT32, indices.data(), indices.size());
+  agxSetParameterArray1D(ex, "primitive.index", ANARI_UINT32_VEC3, indices.data(), indices.size() / 3);
 
   // Set number of time steps
   const uint32_t T = 4;
