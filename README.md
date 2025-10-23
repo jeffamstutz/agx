@@ -1,4 +1,4 @@
-# AGX — Animated Geometry eXport
+# AGX — Animated Geometry eXchange
 
 AGX is a tiny, stb-style API (implemented in C++) for dumping animated geometry
 and associated parameters to a file. It mirrors the feel of the ANARI API:
